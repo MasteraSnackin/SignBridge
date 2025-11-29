@@ -56,3 +56,10 @@ flutter:
   assets:
     - assets/animations/
     - assets/images/
+  
+  # Explicitly declare Android v2 embedding
+  plugin:
+    platforms:
+      android:
+        package: com.signbridge.app
+        pluginClass: none

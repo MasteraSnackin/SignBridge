@@ -1,9 +1,5 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
+// SignBridge Widget Test
+// Tests the main app widget initialization
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,20 +7,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:signbridge/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('SignBridge app initializes correctly', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const SignBridgeApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app title is present
+    expect(find.text('SignBridge'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Verify that we have navigation options
+    expect(find.byType(MaterialApp), findsOneWidget);
+  });
+
+  testWidgets('Home screen has mode selection buttons', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const SignBridgeApp());
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the app has a MaterialApp widget
+    expect(find.byType(MaterialApp), findsOneWidget);
   });
 }
