@@ -44,16 +44,21 @@ app.*.map.json
 /android/app/release
 
 # Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
 *.jks
+*.keystore
+local.properties
+android/.gradle/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/app/build/
+android/build/
+android/.idea/
+android/captures/
+android/local.properties
+android/key.properties
 
-# iOS/XCode related
+# iOS related
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
@@ -87,16 +92,24 @@ app.*.map.json
 lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
-!**/ios/**/default.mode1v3
-!**/ios/**/default.mode2v3
-!**/ios/**/default.pbxuser
-!**/ios/**/default.perspectivev3
-
-# Windows related
-windows/flutter/ephemeral/
-
-# Coverage
-coverage/
-
-# Exceptions
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/dev/ci/**/Gemfile.lock
+
+# Large model files (will be downloaded on first run)
+assets/models/*.tflite
+assets/models/*.onnx
+assets/models/*.bin
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+coverage/
+test/.test_coverage.dart
